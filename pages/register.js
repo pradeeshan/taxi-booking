@@ -1,0 +1,18 @@
+import Navbar from '../components/Navbar';
+
+export default function Register() {
+  return (
+    <div>
+      <Navbar />
+      <main className="p-4 max-w-md mx-auto">
+        <h1 className="text-2xl font-bold mb-4">Register</h1>
+        <form className="space-y-4">
+          <input className="border p-2 w-full" placeholder="Name" />
+          <input className="border p-2 w-full" placeholder="Email" />
+          <input className="border p-2 w-full" type="password" placeholder="Password" />
+          <button className="bg-green-500 text-white px-4 py-2 rounded">Register</button>
+        </form>
+      </main>
+    </div>
+  );
+}
