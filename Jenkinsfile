@@ -27,17 +27,6 @@ pipeline{
             }
 
         }
-        
-        stage("Sonarqube Analysis") {
-            steps {
-                script {
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        bat "mvn sonar:sonar"
-                    }
-                }
-            }
-
-        }
 
         stage("Build Docker Image") {
             steps {
