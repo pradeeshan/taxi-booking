@@ -64,6 +64,13 @@ pipeline{
             }
         }
 
+        stage('Scan Image with Trivy') {
+            steps {
+                bat "trivy image --exit-code 100 --severity HIGH,CRITICAL
+                    ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+            }
+        }
+
         stage("Push to Docker Hub") {
             steps {
                 script {
