@@ -97,10 +97,14 @@ pipeline{
         stage("Smoke Test") {
             steps {
                 script {
-                    bat "curl -I http://localhost:3000 || exit 1"
+                    bat """
+                        timeout /t 10 >nul
+                        curl -I http://localhost:3000 || exit 1
+                    """
                 }
             }
         }
+
     }
 
 }
