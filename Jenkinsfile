@@ -64,10 +64,11 @@ pipeline{
             }
         }
 
-        stage('Scan Image with Trivy') {
+        stage('Trivy Scan') {
             steps {
-                bat "trivy image --exit-code 100 --severity HIGH,CRITICAL
-                    ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                script {
+                    bat "trivy image --exit-code 1 --severity HIGH,CRITICAL ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                }
             }
         }
 
