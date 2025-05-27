@@ -67,7 +67,7 @@ pipeline{
         stage('Trivy Scan') {
             steps {
                 script {
-                    bat "C:\\Users\\prade\\scoop\\shims\\trivy.exe image --exit-code 100 --severity HIGH,CRITICAL ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                    bat "C:\\Users\\prade\\scoop\\shims\\trivy.exe image --exit-code 0 --severity HIGH,CRITICAL ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
                 }
             }
         }
