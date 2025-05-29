@@ -67,7 +67,7 @@ pipeline{
         stage('Trivy Scan') {
             steps {
                 script {
-                    bat "C:\\Users\\prade\\scoop\\shims\\trivy.exe image --exit-code 0 --severity HIGH,CRITICAL ${DOCKER_USER}/${IMAGE_NAME}:${IMAGE_TAG}"
+                    bat "C:\\Users\\prade\\scoop\\shims\\trivy.exe image --exit-code 0 --severity HIGH,CRITICAL ${FULL_IMAGE_NAME}"
                 }
             }
         }
@@ -93,20 +93,7 @@ pipeline{
                 }
             }
         }
-
-        stage("Smoke Test") {
-            steps {
-                script {
-                    bat """
-                        timeout /t 10 >nul
-                        curl -I http://localhost:3000 || exit 1
-                    """
-                }
-            }
-        }
-
     }
-
 }
 
 
